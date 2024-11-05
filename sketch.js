@@ -14,7 +14,7 @@ let spinCounter = 0;
 
 function setup() {
   createCanvas(300, 500);  // 縦長のスマホ画面サイズに設定
-  canvas.parent('canvasContainer');
+  
   textSize(20);
   textAlign(CENTER, CENTER);
   
