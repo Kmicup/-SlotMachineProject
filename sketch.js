@@ -57,12 +57,12 @@ function draw() {
   fill(100);
   rect(width / 2 - 50, height - 80, 100, 30);  // スピンボタン
   fill(255);
-  text("Spin", width / 2, height - 65);
+  text("回す", width / 2, height - 65);
   
   fill(100);
   rect(width / 2 - 50, height - 120, 100, 30);  // モード切り替えボタン
   fill(255);
-  text("Mode", width / 2, height - 105);
+  text("モード", width / 2, height - 105);
   
   // スロットが回転中であれば、ランダムに内容を変える
   if (spinning) {
