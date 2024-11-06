@@ -13,8 +13,8 @@ let spinCounter = 0;
 let bellCount = 3; // 鈴の数の初期値
 
 function setup() {
-  createCanvas(300, 500);  // ウィンドウの幅と高さに合わせる
-  canvas.parent('canvasContainer');
+  createCanvas(300, 500);  // 縦長のスマホ画面サイズに設定
+  
   textSize(20);
   textAlign(CENTER, CENTER);
   
