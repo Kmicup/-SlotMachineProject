@@ -15,7 +15,7 @@ let audio;
 let accelerometerEnabled = false; // 加速度センサーの有効/無効フラグ
 
 function preload() {
-  audio = loadSound("宇宙基地サイレン.mp3");
+ // audio = loadSound("宇宙基地サイレン.mp3");
 }
 
 function setup() {
