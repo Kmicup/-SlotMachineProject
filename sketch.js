@@ -39,21 +39,21 @@ function draw() {
   textSize(24);
   text(currentText, x + rectWidth / 2, y + rectHeight / 2);
   
-  // スピンボタンとモード切り替えボタン
+  // スピンボタンとモード切り替えボタン（少し右にずらす）
   fill(100);
-  rect(width / 2 - 50, height - 80, 100, 30);  // スピンボタン
+  rect(width / 2 - 30, height - 80, 100, 30);  // スピンボタン
   fill(255);
-  text("回す", width / 2, height - 65);
+  text("回す", width / 2 + 20, height - 65);
   
   fill(100);
-  rect(width / 2 - 50, height - 120, 100, 30);  // モード切り替えボタン
+  rect(width / 2 - 30, height - 120, 100, 30);  // モード切り替えボタン
   fill(255);
-  text("モード", width / 2, height - 105);
+  text("モード", width / 2 + 20, height - 105);
   
-  // 鈴の数表示
+  // 鈴の数表示（＋と−ボタンの上に配置）
   fill(0);
   textSize(16);
-  text("鈴の数: " + bellCount, 50, height - 30);
+  text("鈴の数: " + bellCount, 55, height - 75);
   
   // 鈴の数増減ボタン
   fill(100);
@@ -76,7 +76,7 @@ function draw() {
 
 function mousePressed() {
   // スピンボタンのクリック判定
-  if (mouseX > width / 2 - 50 && mouseX < width / 2 + 50 && mouseY > height - 80 && mouseY < height - 50) {
+  if (mouseX > width / 2 - 30 && mouseX < width / 2 + 70 && mouseY > height - 80 && mouseY < height - 50) {
     if (!spinning) {
       spinning = true;
       spinCounter = 0;
@@ -84,7 +84,7 @@ function mousePressed() {
   }
   
   // モード切り替えボタンのクリック判定
-  if (mouseX > width / 2 - 50 && mouseX < width / 2 + 50 && mouseY > height - 120 && mouseY < height - 90) {
+  if (mouseX > width / 2 - 30 && mouseX < width / 2 + 70 && mouseY > height - 120 && mouseY < height - 90) {
     mode = (mode + 1) % 2;  // モードを 0 -> 1 -> 0 と循環させる
     updateSlotItem();       // モードが切り替わったらスロット内容も更新
   }
@@ -103,4 +103,3 @@ function updateSlotItem() {
   let index = int(random(modeItems[mode].length));
   currentText = modeItems[mode][index];
 }
-
