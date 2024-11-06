@@ -13,7 +13,7 @@ let spinCounter = 0;
 let bellCount = 3; // 鈴の数の初期値
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);  // ウィンドウの幅と高さに合わせる
+  createCanvas(300, 500);  // ウィンドウの幅と高さに合わせる
   
   textSize(20);
   textAlign(CENTER, CENTER);
