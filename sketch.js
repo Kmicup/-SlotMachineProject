@@ -20,7 +20,7 @@ let totalAccel = 0;  // 総合加速度
 
 function preload() {
   // 音声ファイルの読み込み
-  sirenSound = loadSound("宇宙基地サイレン.mp3");
+  sirenSound = loadSound("alert-sound.mp3");
 }
 
 function setup() {
