@@ -1,19 +1,19 @@
-let rectWidth = 200;
-let rectHeight = 50;
+let rectWidth = 300; // スロットの横幅を大きく設定
+let rectHeight = 100; // スロットの縦幅を大きく設定
 let modeItems = [
-  ["大きいボール", "中ボール2個", "鐘を鳴らしタイム", "ペナルティ選択", "投げる回数+1"], // ご褒美モードの項目
+  ["大きいボール", "中ボール2個", "鐘を鳴らしタイム", "ペナルティ選択", "投げる回数+1"],   // ご褒美モードの項目
   ["禁止マス", "全員ケンケン", "避け手の範囲拡大", "避ける範囲縮小", "一人動けない"] // ペナルティモードの項目
 ];
-let currentText = ""; // スロット表示内容
-let mode = 1; // 初期値: 1 = ペナルティモード (0: ご褒美モード, 1: ペナルティモード)
+let currentText = "";  // スロット表示内容
+let mode = 1;  // 初期値: 1 = ペナルティモード (0: ご褒美モード, 1: ペナルティモード)
 let modeNames = ["ご褒美モード", "ペナルティモード"];
 let spinning = false;
 let spinDuration = 20; // スロットが回転するフレーム数
 let spinCounter = 0;
 
 function setup() {
- createCanvas(windowWidth, windowHeight);  // 画面サイズに合わせてキャンバスを作成
-  textSize(20);
+  createCanvas(400, 600);  // キャンバスのサイズを固定
+  textSize(24);  // 文字サイズを大きく
   textAlign(CENTER, CENTER);
   
   // 初期のスロット内容を設定
@@ -39,12 +39,12 @@ function draw() {
   
   // スピンボタンとモード切り替えボタン
   fill(100);
-  rect(width / 2 - 50, height - 80, 100, 30); // スピンボタン
+  rect(width / 2 - 50, height - 80, 100, 30);  // スピンボタン
   fill(255);
   text("回す", width / 2, height - 65);
   
   fill(100);
-  rect(width / 2 - 50, height - 120, 100, 30); // モード切り替えボタン
+  rect(width / 2 - 50, height - 120, 100, 30);  // モード切り替えボタン
   fill(255);
   text("モード", width / 2, height - 105);
   
@@ -70,7 +70,7 @@ function mousePressed() {
   
   // モード切り替えボタンのクリック判定
   if (mouseX > width / 2 - 50 && mouseX < width / 2 + 50 && mouseY > height - 120 && mouseY < height - 90) {
-    mode = (mode + 1) % 2; // モードを 0 -> 1 -> 0 と循環させる
+    mode = (mode + 1) % 2;  // モードを 0 -> 1 -> 0 と循環させる
     updateSlotItem();       // モードが切り替わったらスロット内容も更新
   }
 }
