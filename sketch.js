@@ -10,6 +10,7 @@ let modeNames = ["ご褒美モード", "ペナルティモード"];
 let spinning = false;
 let spinDuration = 20; // スロットが回転するフレーム数
 let spinCounter = 0;
+let bellCount = 3; // 鈴の数の初期値
 
 function setup() {
   createCanvas(300, 500);  // 縦長のスマホ画面サイズに設定
@@ -49,6 +50,19 @@ function draw() {
   fill(255);
   text("モード", width / 2, height - 105);
   
+  // 鈴の数表示
+  fill(0);
+  textSize(16);
+  text("鈴の数: " + bellCount, 50, height - 30);
+  
+  // 鈴の数増減ボタン
+  fill(100);
+  rect(10, height - 60, 30, 30);  // −ボタン
+  rect(70, height - 60, 30, 30);  // ＋ボタン
+  fill(255);
+  text("-", 25, height - 45);
+  text("+", 85, height - 45);
+  
   // スロットが回転中であれば、ランダムに内容を変える
   if (spinning) {
     if (spinCounter < spinDuration) {
@@ -74,6 +88,14 @@ function mousePressed() {
     mode = (mode + 1) % 2;  // モードを 0 -> 1 -> 0 と循環させる
     updateSlotItem();       // モードが切り替わったらスロット内容も更新
   }
+  
+  // 鈴の数増減ボタンのクリック判定
+  if (mouseX > 10 && mouseX < 40 && mouseY > height - 60 && mouseY < height - 30) {
+    bellCount = max(0, bellCount - 1);  // −ボタンを押すと減少（最低値は0）
+  }
+  if (mouseX > 70 && mouseX < 100 && mouseY > height - 60 && mouseY < height - 30) {
+    bellCount++;  // ＋ボタンを押すと増加
+  }
 }
 
 // スロットのアイテムを現在のモードに合わせて更新する関数
@@ -81,3 +103,4 @@ function updateSlotItem() {
   let index = int(random(modeItems[mode].length));
   currentText = modeItems[mode][index];
 }
+
