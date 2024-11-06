@@ -16,6 +16,13 @@
       margin: 0;
       background-color: #f0f0f0; /* 背景色を薄いグレーに */
     }
+    /* canvasを中央揃えし、縦幅を固定 */
+    canvas {
+      display: block;
+      width: 100%;
+      max-width: 400px;  /* 横幅の最大値を設定 */
+      height: 600px;     /* キャンバスの高さを固定 */
+    }
   </style>
 </head>
 <body>
@@ -23,3 +30,4 @@
   <script src="sketch.js"></script>
 </body>
 </html>
+
