@@ -1,5 +1,5 @@
-let rectWidth = 300; // スロットの横幅を大きく設定
-let rectHeight = 100; // スロットの縦幅を大きく設定
+let rectWidth = 300; // スロットの横幅
+let rectHeight = 100; // スロットの縦幅
 let modeItems = [
   ["大きいボール", "中ボール2個", "鐘を鳴らしタイム", "ペナルティ選択", "投げる回数+1"],   // ご褒美モードの項目
   ["禁止マス", "全員ケンケン", "避け手の範囲拡大", "避ける範囲縮小", "一人動けない"] // ペナルティモードの項目
@@ -12,7 +12,7 @@ let spinDuration = 20; // スロットが回転するフレーム数
 let spinCounter = 0;
 
 function setup() {
-  createCanvas(400, 600);  // キャンバスのサイズを固定
+  createCanvas(windowWidth, windowHeight);  // キャンバスサイズを画面全体に合わせる
   textSize(24);  // 文字サイズを大きく
   textAlign(CENTER, CENTER);
   
@@ -86,9 +86,3 @@ function updateSlotItem() {
   currentText = modeItems[mode][index];
 }
 
-
-// スロットのアイテムを現在のモードに合わせて更新する関数
-function updateSlotItem() {
-  let index = int(random(modeItems[mode].length));
-  currentText = modeItems[mode][index];
-}
