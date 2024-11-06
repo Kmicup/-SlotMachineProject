@@ -11,6 +11,17 @@ let spinning = false;
 let spinDuration = 20; // スロットが回転するフレーム数
 let spinCounter = 0;
 let bellCount = 3; // 鈴の数の初期値
+let sirenSound;  // サイレン音声用
+let isSirenPlaying = false;  // サイレンが再生中かどうか
+
+const threshold = 0.5; // 総合加速度の閾値を0.5に設定
+let acceleration = { x: 0, y: 0, z: 0 }; // 加速度のデータ
+let totalAccel = 0;  // 総合加速度
+
+function preload() {
+  // 音声ファイルの読み込み
+  sirenSound = loadSound("宇宙基地サイレン.mp3");
+}
 
 function setup() {
   createCanvas(300, 500);  // 縦長のスマホ画面サイズに設定
@@ -20,6 +31,35 @@ function setup() {
   
   // 初期のスロット内容を設定
   updateSlotItem();
+  
+  // 加速度センサーを有効にする
+  if (typeof DeviceMotionEvent.requestPermission === 'function') {
+    DeviceMotionEvent.requestPermission().then(response => {
+      if (response === 'granted') {
+        window.addEventListener('devicemotion', (event) => {
+          acceleration.x = event.acceleration.x || 0;
+          acceleration.y = event.acceleration.y || 0;
+          acceleration.z = event.acceleration.z || 0;
+          
+          // 総合加速度を計算
+          totalAccel = Math.sqrt(acceleration.x ** 2 + acceleration.y ** 2 + acceleration.z ** 2);
+          
+          // 加速度が閾値を下回った場合に音を鳴らす
+          if (totalAccel < threshold && !isSirenPlaying) {
+            sirenSound.loop();  // サイレンをループ再生
+            isSirenPlaying = true;
+          } else if (totalAccel >= threshold && isSirenPlaying) {
+            sirenSound.stop();  // サイレンを停止
+            isSirenPlaying = false;
+          }
+        });
+      } else {
+        alert("加速度センサーへのアクセスが拒否されました。");
+      }
+    });
+  } else {
+    alert("このデバイスでは加速度センサーは利用できません。");
+  }
 }
 
 function draw() {
