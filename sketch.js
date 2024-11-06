@@ -12,7 +12,7 @@ let spinDuration = 20; // スロットが回転するフレーム数
 let spinCounter = 0;
 
 function setup() {
-  createCanvas(300, 500); // 縦長のスマホ画面サイズに設定
+ createCanvas(windowWidth, windowHeight);  // 画面サイズに合わせてキャンバスを作成
   textSize(20);
   textAlign(CENTER, CENTER);
   
