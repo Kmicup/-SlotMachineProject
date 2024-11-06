@@ -14,7 +14,7 @@ let bellCount = 3; // 鈴の数の初期値
 
 function setup() {
   createCanvas(300, 500);  // ウィンドウの幅と高さに合わせる
-  
+  canvas.parent('canvasContainer');
   textSize(20);
   textAlign(CENTER, CENTER);
   
